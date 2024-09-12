@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Все книги</h1>
+
+    {% for i in book_object %}
+
+    <h2>{{ i.title }}</h2>
+    <img src="{{ i.image.url }}" alt="" width="180" height="280">
+    <p>{{ i.created_at }}</p>
+    <a href="/book_list/{{ i.id }}/">Подробнее</a>
+
+    {% endfor %}
+</body>
+</html>

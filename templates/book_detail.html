@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <img src="{{ book_id.image.url }}" alt="">
+    <h1>{{ book_id.title }}</h1>
+    <p>{{ book_id.description }}</p>
+    <p>Жанр: {{ book_id.genre }}</p>
+    <p>Автор: {{ book_id.author }}</p>
+    <p>Год публикации: {{book_id.publication_year}}</p>
+    <p>Количество страниц: {{book_id.pages}}</p>
+    <p>Цена: {{book_id.price}} сом</p>
+    <a href="{{ book_id.url }}">Перейти на сайт</a>
+    <p>{{ book_id.email }}</p>
+</body>
+</html>
