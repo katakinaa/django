@@ -1,19 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <img src="{{ book_id.image.url }}" alt="">
-    <h1>{{ book_id.title }}</h1>
-    <p>{{ book_id.description }}</p>
-    <p>Жанр: {{ book_id.genre }}</p>
-    <p>Автор: {{ book_id.author }}</p>
-    <p>Год публикации: {{book_id.publication_year}}</p>
-    <p>Количество страниц: {{book_id.pages}}</p>
-    <p>Цена: {{book_id.price}} сом</p>
-    <a href="{{ book_id.url }}">Перейти на сайт</a>
-    <p>{{ book_id.email }}</p>
-</body>
-</html>
+{% load static %}
+{% include 'header.html' %}
+<link rel="stylesheet" href="{% static 'book_detail.css' %}">
+
+<div class="book-wrapper">
+    <div class="book-image-container">
+        <img src="{{ book_id.image.url }}" alt="{{ book_id.title }}" class="book-image">
+        <p class="favorite">Избранное</p>
+    </div>
+    <div class="book-details">
+        <h1 class="book-title">{{ book_id.title }} ({{book_id.publication_year}})</h1>
+        <p><strong>Жанр:</strong> {{ book_id.genre }}</p>
+        <p><strong>Автор:</strong> {{ book_id.author }}</p>
+        <p><strong>Количество страниц:</strong> {{book_id.pages}}</p>
+        <p><strong>Цена:</strong> {{book_id.price}} сом</p>
+        <a href="{{ book_id.url }}" class="book-link">Перейти на сайт</a>
+        <p class="book-email">{{ book_id.email }}</p>
+    </div>
+</div>
+<div class="book-description-wrapper">
+    <p class="book-description">{{ book_id.description }}</p>
+</div>
+
+<div class="center">
+    {% for j in book_id.review_book.all %}
+    <div class="comment">
+        <p class="date">{{ j.created_at }}</p>
+        <h3>{{ j.text_book }}</h3>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% include 'footer.html' %}
