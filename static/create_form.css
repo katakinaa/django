@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #E8F0FE;
+    font-family: 'Playfair Display', serif;
+    color: #444;
+    padding: 20px;
+}
+
+.decor {
+    position: relative;
+    max-width: 450px;
+    margin: 50px auto 0;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border: 2px solid #d1d9e6;
+}
+
+.form-left-decoration, .form-right-decoration {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 15px;
+    background: #FFD54F;
+    border-radius: 8px;
+}
+
+.form-left-decoration {
+    top: 10px;
+    left: -25px;
+}
+
+.form-right-decoration {
+    bottom: 10px;
+    right: -25px;
+}
+
+.form-left-decoration:before, .form-right-decoration:before {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 15px;
+    border-radius: 8px;
+    background: #FFB74D;
+}
+
+.form-left-decoration:before {
+    top: -20px;
+    left: 10px;
+}
+
+.form-right-decoration:before {
+    bottom: -20px;
+    right: 10px;
+}
+
+.circle {
+    position: absolute;
+    top: 20px;
+    right: -40px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #FF7043;
+}
+
+.form-inner {
+    padding: 30px;
+    text-align: center;
+}
+
+.form-inner h3 {
+    margin-top: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    color: #FF7043;
+    margin-bottom: 20px;
+}
+
+.form-inner input, .form-inner textarea {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background: #F7FAFC;
+    border: 1px solid #d1d9e6;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #333;
+    transition: border-color 0.3s;
+}
+
+.form-inner input:focus, .form-inner textarea:focus {
+    border-color: #FF7043;
+}
+
+.form-inner textarea {
+    resize: none;
+}
+
+.form-inner input[type="submit"] {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #FF7043;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.form-inner input[type="submit"]:hover {
+    background: #FF5722;
+}
+

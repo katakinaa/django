@@ -1,0 +1,15 @@
+{% load static %}
+{% include '../header.html' %}
+<br><br><br>
+<link rel="stylesheet" href="{% static 'update_form.css' %}">
+
+<form method="POST" enctype="multipart/form-data" class="transparent">
+    <div class="form-inner">
+        <h3>Изменить</h3>
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Отправить">
+    </div>
+</form>
+
+{% include '../footer.html' %}

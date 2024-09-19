@@ -1,0 +1,19 @@
+{% include '../header.html' %}
+<br><br><br>
+
+
+<center>
+<div class="square_mom">
+{% for i in book_object %}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{ i.title }}</h5>
+        <a href="/book_list/{{ i.id }}/delete/" class="btn btn-primary">Удалить</a>
+    </div>
+</div>
+{% endfor %}
+</div>
+</center>
+
+
+{% include '../footer.html' %}
