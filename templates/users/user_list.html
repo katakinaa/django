@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список сотрудников</title>
+</head>
+<body>
+<div>
+    <ol>
+        {% for i in object_list %}
+        <li>
+            <h1>НИК: {{ i.username }}</h1>
+            <p>Почта: {{ i.email }}</p>
+            <p>Имя: {{ i.first_name }}</p>
+            <p>Возраст: {{ i.age }}</p>
+            <p>Уровень разработчика: {{ i.developer_level }}</p>
+            <p>Зарплата: {{ i.salary }}$</p>
+        </li>
+        {% endfor %}
+    </ol>
+</div>
+<form action="{% url 'users:logout'  %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">Выйти</button>
+</form>
+</body>
+</html>
