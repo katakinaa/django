@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Парсер Резки</title>
+</head>
+<body>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Начать парсинг</button>
+</form>
+<a href="{% url 'rezka_film_list' %}">Перейти на список фильмов</a>
+</body>
+</html>

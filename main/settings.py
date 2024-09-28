@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'product',
     'users',
     'debug_toolbar',
+    'parser_app',
+    'tv_show',
 ]
 
 MIDDLEWARE = [

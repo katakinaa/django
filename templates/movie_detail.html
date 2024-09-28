@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ movie.title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        .movie-detail {
+            width: 80%;
+            max-width: 800px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        img {
+            width: 100%; /* Изображение на всю ширину контейнера */
+            height: auto; /* Автоматическая высота */
+            border-radius: 8px; /* Скругление углов */
+            margin-bottom: 15px; /* Отступ снизу */
+        }
+        .reviews {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="movie-detail">
+        <h1>{{ movie.title }}</h1>
+        <img src="{{ movie.image.url }}" alt="{{ movie.title }} - изображение"> <!-- Добавляем изображение -->
+        <p><strong>Описание:</strong> {{ movie.description }}</p>
+        <p><strong>Цена:</strong> {{ movie.price }}</p>
+
+        <div class="reviews">
+            <h2>Отзывы:</h2>
+            {% for review in reviews %}
+                <div>
+                    <strong>
+                        {% if review.user %}
+                            {{ review.user.username }}
+                        {% else %}
+                            Аноним
+                        {% endif %}
+                    </strong>
+                    <p>{{ review.text_book }}</p>
+                    <p><em>Оценка: {{ review.rating }}</em></p>
+                </div>
+            {% empty %}
+                <p>Нет отзывов на этот фильм.</p>
+            {% endfor %}
+            <h3>Средняя оценка: {{ avg_rating }}</h3>
+        </div>
+
+<!--        <h3>Добавить отзыв:</h3>-->
+<!--        <form method="post">-->
+<!--            {% csrf_token %}-->
+<!--            {{ review_form.as_p }}-->
+<!--            <button type="submit">Отправить отзыв</button>-->
+<!--        </form>-->
+    </div>
+</body>
+</html>

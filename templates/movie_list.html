@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список фильмов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        .add-movie {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        .add-movie a {
+            text-decoration: none;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background-color: white;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex; /* Используем flexbox для выравнивания */
+        }
+        img {
+            width: 100px; /* Ширина изображения */
+            height: auto; /* Автоматическая высота */
+            margin-right: 20px; /* Отступ справа от изображения */
+        }
+        li strong {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        p {
+            margin: 5px 0;
+        }
+        .actions {
+            margin-top: 10px;
+        }
+        .actions a {
+            text-decoration: none;
+            margin-right: 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .edit {
+            background-color: #ffc107;
+            color: white;
+        }
+        .delete {
+            background-color: #dc3545;
+            color: white;
+        }
+        .view-detail {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Список фильмов</h1>
+
+    <div class="container">
+        <div class="add-movie">
+            <a href="{{ add_movie_url }}">Добавить фильм</a>
+        </div>
+
+        <ul>
+            {% for movie in movies %}
+                <li>
+                    <img src="{{ movie.image.url }}" alt="{{ movie.title }} - изображение"> <!-- Добавляем изображение -->
+                    <div>
+                        <strong>{{ movie.title }}</strong>
+                        <p>{{ movie.description }}</p>
+                        <p>Цена: {{ movie.price }}</p>
+                        <div class="actions">
+                            <a href="{% url 'edit_movie' movie.id %}" class="edit">Редактировать</a>
+                            <a href="{% url 'delete_movie' movie.id %}" class="delete">Удалить</a>
+                            <a href="{% url 'movie_detail' movie.id %}" class="view-detail">Детали</a> <!-- Кнопка для детального просмотра -->
+                        </div>
+                    </div>
+                </li>
+            {% empty %}
+                <li>Нет фильмов в списке.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
